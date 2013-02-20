@@ -26,6 +26,10 @@ import org.qf.qcri.humane.tweetcollector.persist.cassandra.LogCollectionActivity
 import org.qf.qcri.humane.tweetcollector.twitter.TweetCollector;
 import org.qf.qcri.humane.tweetcollector.util.ReadWriteProperties;
 
+/*
+* This handles the request forwarded from the code collector task.jsp. This servlet is responsible for starting and stopping a collection as specified by the user.
+*/
+
 public class CollectorTaskServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static String COLLECTION_TASK_ID;

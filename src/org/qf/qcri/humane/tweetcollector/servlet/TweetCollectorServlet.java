@@ -37,6 +37,11 @@ import org.qf.qcri.humane.tweetcollector.util.ReadWriteProperties;
 
 import twitter4j.TwitterException;
 
+/*
+* TweetCollectorServlet handles the new collection request from forwarded from collection.jsp
+*
+*/
+
 public class TweetCollectorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static String EVENT_ID;
@@ -45,7 +50,7 @@ public class TweetCollectorServlet extends HttpServlet {
 	private boolean abort = false;
 	public TweetCollectorServlet()
 	{
-		System.out.println("I am inside constructor of tweetcollector servlet");
+		//System.out.println("I am inside constructor of tweetcollector servlet");
 	}
 	
 	public void init(ServletConfig config) throws ServletException {

@@ -26,6 +26,8 @@ import org.qf.qcri.humane.tweetcollector.persist.cassandra.CassandraSchema;
 import org.qf.qcri.humane.tweetcollector.persist.cassandra.LogCollectionActivity;
 import org.qf.qcri.humane.tweetcollector.twitter.TweetCollector;
 
+
+/*  initialized 
 public class ContextListener implements ServletContextListener {
 
 
