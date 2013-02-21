@@ -1,14 +1,11 @@
 package org.qf.qcri.humane.tweetcollector.util;
 
-import java.text.DateFormat;
-import java.util.Date;
-
+import twitter4j.Status;
 import twitter4j.internal.org.json.JSONException;
 import twitter4j.internal.org.json.JSONObject;
-
-import twitter4j.GeoLocation;
-import twitter4j.Status;
-
+/*
+ * SerializedTweet is used for serializing the content of a collected tweet to an equivalent json format
+ */
 public class SerializedTweet {
 //more information refer to http://twitter4j.org/javadoc/twitter4j/Status.html
 	private static final String GET_CONTRIBUTORS = "Contributors";
@@ -31,8 +28,6 @@ public class SerializedTweet {
 	private static final String IS_RETWEETBYME = "is_retweet_byme";
 	private static final String IS_TRUNCATED = "is_truncated";
 
-	private static final long serialVersionUID = 1L;
-	
 	protected String fromUser;
 	protected long createdAt;
 	protected String text;

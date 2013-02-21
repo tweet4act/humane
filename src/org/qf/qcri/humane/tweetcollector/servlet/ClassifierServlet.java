@@ -4,7 +4,6 @@ import java.util.TreeMap;
 
 import javax.servlet.http.HttpServlet;
 
-import me.prettyprint.cassandra.serializers.LongSerializer;
 import me.prettyprint.cassandra.serializers.StringSerializer;
 import me.prettyprint.hector.api.Keyspace;
 import me.prettyprint.hector.api.beans.OrderedRows;
@@ -16,10 +15,15 @@ import me.prettyprint.hector.api.query.RangeSlicesQuery;
 import org.qf.qcri.humane.tweetcollector.persist.cassandra.CassandraSchema;
 import org.qf.qcri.humane.tweetfeatureextraction.CassandraPersistentFeatureExtractor;
 
-import weka.core.Instances;
+/*
+ * servlet that handles the tweet classifier code based upon the previously content feature extracted from  tweets
+ */
 
 public class ClassifierServlet extends HttpServlet{
 	
+
+private static final long serialVersionUID = 1L;
+
 public void runClassifier()
 {
 	TreeMap<Long, String> tweetSet = null;
@@ -27,7 +31,6 @@ public void runClassifier()
 	CassandraSchema cassandraSchema = new CassandraSchema(CassandraSchema.DEFAULT_KEYSPACE_NAME);
 	Keyspace keyspace = cassandraSchema.getKeyspace();
 	StringSerializer ss = null;
-	LongSerializer ls = null;
 	RangeSlicesQuery<String, String, String> rangeSlicesQuery = HFactory.createRangeSlicesQuery(keyspace, ss, ss, ss);
 	rangeSlicesQuery.setColumnFamily(CassandraSchema.COLUMNFAMILY_NAME_FEATURE_EXTRACTOR);
 	

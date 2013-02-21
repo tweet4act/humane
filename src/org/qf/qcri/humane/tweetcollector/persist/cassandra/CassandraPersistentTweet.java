@@ -1,35 +1,22 @@
 package org.qf.qcri.humane.tweetcollector.persist.cassandra;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
 import java.util.TreeMap;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import me.prettyprint.cassandra.serializers.LongSerializer;
 import me.prettyprint.cassandra.serializers.StringSerializer;
 import me.prettyprint.cassandra.service.template.ColumnFamilyTemplate;
 import me.prettyprint.hector.api.Keyspace;
 import me.prettyprint.hector.api.beans.ColumnSlice;
-import me.prettyprint.hector.api.beans.CounterSlice;
 import me.prettyprint.hector.api.beans.HColumn;
-import me.prettyprint.hector.api.beans.HCounterColumn;
-import me.prettyprint.hector.api.beans.OrderedRows;
-import me.prettyprint.hector.api.beans.Row;
 import me.prettyprint.hector.api.factory.HFactory;
 import me.prettyprint.hector.api.mutation.Mutator;
-import me.prettyprint.hector.api.query.ColumnQuery;
 import me.prettyprint.hector.api.query.QueryResult;
-import me.prettyprint.hector.api.query.RangeSlicesQuery;
 import me.prettyprint.hector.api.query.SliceQuery;
-import me.prettyprint.hector.api.query.SubSliceCounterQuery;
 
-
+/*
+ * CassandraPersistentTweet holds the schema for the column family which holds the tweet content 
+ */
 
 
 public class CassandraPersistentTweet {
@@ -125,39 +112,5 @@ public class CassandraPersistentTweet {
 		}
 	}
 	
-	    /*
-		public String getRecentTweets(String key){
-		    //Following is an example of an Slice query to get all columns give a specific row
-			SliceQuery<String, String, String> q = HFactory.createSliceQuery(keyspace, ss, ss, ss);
-			//return 5
-			q.setColumnFamily(columnFamilyName).setKey(key).setRange("", "", true, 5);
-			QueryResult<ColumnSlice<String, String>> r = q.execute();
-			ColumnSlice<String, String> cs = r.get(); 
-			List<String> values = new ArrayList<String>();
-			int i=0;
-			for(HColumn<String , String> hc :cs.getColumns()){
-				try {
-					
-					JSONObject jsonobj = new JSONObject(hc.getValue());
-					String text=jsonobj.get("text").toString();
-					String id=jsonobj.get("tweetID").toString();
-					String date= jsonobj.get("createdAt").toString();
-					i=i+1;
-					//preety printing
-					text="("+i+")\t"+text+"\t id:"+id+"\t Date:"+date+"</br>";
-					values.add(text);
-					
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-			}
-			
-		
-			//Arrays.toString(values.toArray());
-			return Arrays.toString(values.toArray());
-		}
-		*/
 }
 

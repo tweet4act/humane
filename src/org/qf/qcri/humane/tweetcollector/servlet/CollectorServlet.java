@@ -1,8 +1,6 @@
 package org.qf.qcri.humane.tweetcollector.servlet;
 
 import java.io.IOException;
-import java.util.Map;
-import java.util.TreeMap;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -26,8 +24,6 @@ public class CollectorServlet extends HttpServlet {
 	public static String AUTHENTICATION_TYPE;
 	public static String AUTHENTICATION_SECRET;
     Thread t;
-	private long sleepTime;
-	private boolean abort = false;
 	public CollectorServlet()
 	{
 		
@@ -42,8 +38,6 @@ public class CollectorServlet extends HttpServlet {
 
 	  public void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		boolean initialized = false;
-
 		try {
 			// parses the request's content to extract file data
 			COLLECTION_NAME = request.getParameter("name");
@@ -67,8 +61,6 @@ public class CollectorServlet extends HttpServlet {
 			
 			
 			CassandraPersistentCollection cpc= new CassandraPersistentCollection(CassandraSchema.DEFAULT_KEYSPACE_NAME,CassandraSchema.COLUMNFAMILY_NAME_COLLECTION);
-			String strtoPrint=COLLECTION_ID+":"+COLLECTION_NAME+":"+UNIVERSAL_TYPE+":"+SUPER_TYPE+":"+EVENT_TYPE+":"+CONSUMER_KEY+":"+CONSUMER_SECRET+":"+AUTHENTICATION_TYPE+":"+AUTHENTICATION_SECRET;
-			
 			cpc.set(COLLECTION_ID, COLLECTION_NAME, UNIVERSAL_TYPE, SUPER_TYPE, EVENT_TYPE, CONSUMER_KEY, CONSUMER_SECRET, AUTHENTICATION_TYPE, AUTHENTICATION_SECRET);
 			
 			request.setAttribute("collectionid", COLLECTION_ID);

@@ -11,6 +11,10 @@ import me.prettyprint.hector.api.factory.HFactory;
 import me.prettyprint.hector.api.mutation.Mutator;
 import me.prettyprint.hector.api.query.QueryResult;
 import me.prettyprint.hector.api.query.SliceQuery;
+/*
+ * CassandraPersistentCollection class defines the structure of column family named COLLECTION 
+ * inside the cassandra db 
+ */
 public class CassandraPersistentCollection {
 
 	final public static int MAX_TWEETS = Integer.MAX_VALUE;

@@ -12,7 +12,10 @@ import me.prettyprint.hector.api.ddl.ComparatorType;
 import me.prettyprint.hector.api.ddl.KeyspaceDefinition;
 import me.prettyprint.hector.api.factory.HFactory;
 
-
+/*
+ * CassandraSchema defines the cluster, keyspace and columnfamilies that are used for the whole tweet collection
+ * process.
+ */
 public class CassandraSchema {
 
 	private static String CLUSTER_NAME = "Test Cluster";

@@ -8,8 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginServlet extends HttpServlet {
 
 	/**
-	 * This servlet class is used by the humane's loginPage.jsp code to check 
-	 * the credentials provided by the user 
+	 * This servlet is responsible for handling the login credential
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -20,23 +19,23 @@ public class LoginServlet extends HttpServlet {
 		{	    
 		     String uname= request.getParameter("uname");
 		     String pwd= request.getParameter("pass");
-		    
-		    // for the time being we support only one username (admin) and one password credential(admin)
-		    // later we are going to change this part with a more sophisticated user account management module 
-
-			   		    
+		
+			 /*
+			  * for the time being it is hard coded to support only one account admin-admin.
+			  * later more sophisticated account handling code can be appended here.
+			  */
+		     
+		     
 		     if (uname.equals("admin") && pwd.equals("admin"))
 		     {
 			        
 
-		         // if credential is correct as expected then redirect the request to the landingpage.jsp
-
+		        //redirect to landingpage.jsp, if the credentials are correct
 		          getServletContext().getRequestDispatcher("/landingpage.jsp").forward(request, response);
 		     }
 			        
 		     else 
-		     	 // if credential is wrong then redirect to a blank page with error message
-
+		    	 //otherwise redirect to other error message page
 		    	 getServletContext().getRequestDispatcher("/badLogin.jsp").forward(request, response);
 		}	
 		catch (Throwable theException) 	    

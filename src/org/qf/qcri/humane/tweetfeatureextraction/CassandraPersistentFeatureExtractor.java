@@ -2,9 +2,6 @@ package org.qf.qcri.humane.tweetfeatureextraction;
 
 import java.util.TreeMap;
 
-import org.json.JSONObject;
-import org.qf.qcri.humane.tweetcollector.persist.cassandra.CassandraSchema;
-
 import me.prettyprint.cassandra.serializers.LongSerializer;
 import me.prettyprint.cassandra.serializers.StringSerializer;
 import me.prettyprint.hector.api.Keyspace;
@@ -14,7 +11,12 @@ import me.prettyprint.hector.api.factory.HFactory;
 import me.prettyprint.hector.api.mutation.Mutator;
 import me.prettyprint.hector.api.query.QueryResult;
 import me.prettyprint.hector.api.query.SliceQuery;
-	
+
+import org.qf.qcri.humane.tweetcollector.persist.cassandra.CassandraSchema;
+/*
+ * CassandraPersistentFeatureExtractor defines the schema of the column family that holds the information about 
+ * the extracted feature from each tweet in the cassandra db	
+ */
 	public class CassandraPersistentFeatureExtractor {
 		
 		
@@ -25,10 +27,13 @@ import me.prettyprint.hector.api.query.SliceQuery;
 		final public static int MAX_TWEETS = Integer.MAX_VALUE;
 
 
+		@SuppressWarnings("unused")
 		private static final String COLLECTION_EXTRACTOR_VERSION = null;
 
+		@SuppressWarnings("unused")
 		private static  String COLLECTION_TWEETID = null;
 
+		@SuppressWarnings("unused")
 		private static  String COLLECTION_EXTRACTED_FEATURE = null;
 		
 		private Keyspace keyspace;

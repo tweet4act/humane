@@ -69,7 +69,9 @@
     <servlet-name>FeatureExtractorServlet</servlet-name>
     <url-pattern>/FeatureExtractorServlet</url-pattern>
   </servlet-mapping>
-<listener>
-      <listener-class>org.qf.qcri.humane.tweetcollector.listeners.ContextListener</listener-class>
-   </listener>
+  <listener>
+  	<listener-class>
+  		org.qf.qcri.humane.tweetcollector.listeners.ContextListener
+  	</listener-class>
+  </listener>
 </web-app>

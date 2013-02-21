@@ -1,7 +1,5 @@
 package org.qf.qcri.humane.tweetcollector.persist.cassandra;
 
-import java.util.Arrays;
-
 import me.prettyprint.cassandra.serializers.LongSerializer;
 import me.prettyprint.cassandra.serializers.StringSerializer;
 import me.prettyprint.hector.api.Keyspace;
@@ -12,7 +10,9 @@ import me.prettyprint.hector.api.factory.HFactory;
 import me.prettyprint.hector.api.mutation.Mutator;
 import me.prettyprint.hector.api.query.QueryResult;
 import me.prettyprint.hector.api.query.RangeSlicesQuery;
-
+/*
+ * LogCollectionActivity is responsible for holding the information about the collections history
+ */
 public class LogCollectionActivity {
 
 	StringSerializer ss = StringSerializer.get();

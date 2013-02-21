@@ -9,6 +9,10 @@ import me.prettyprint.hector.api.mutation.Mutator;
 import me.prettyprint.hector.api.query.CounterQuery;
 import me.prettyprint.hector.api.query.QueryResult;
 
+/*
+ * CassandraPersistentEventCounters is responsible for holding the count information about the
+ * number of tweets collected for each collection task  
+ */
 public class CassandraPersistentEventCounters {
 	final Keyspace keyspace;
 	
@@ -67,7 +71,7 @@ public class CassandraPersistentEventCounters {
 		Mutator<String> mutator = HFactory.createMutator(keyspace, ss);
 		
 		mutator.incrementCounter(key, columnFamilyName, part, increment);
-		//mutator.incrementCounter(key, columnFamilyName, HFactory.createCounterColumn(part, increment));
+	
 		mutator.execute();
 	}
 	

@@ -5,7 +5,9 @@ import java.nio.charset.Charset;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-
+/*
+ * utility functions for cassandra db handling
+ */
 public class Utils {
 	
 	static { 

@@ -19,24 +19,19 @@ import me.prettyprint.hector.api.Cluster;
 import me.prettyprint.hector.api.Keyspace;
 import me.prettyprint.hector.api.exceptions.HectorException;
 import me.prettyprint.hector.api.factory.HFactory;
-
 import org.qf.qcri.humane.tweetcollector.persist.cassandra.CassandraPersistentCollectionTask;
 import org.qf.qcri.humane.tweetcollector.persist.cassandra.CassandraSchema;
-import org.qf.qcri.humane.tweetcollector.persist.cassandra.LogCollectionActivity;
 import org.qf.qcri.humane.tweetcollector.twitter.TweetCollector;
-import org.qf.qcri.humane.tweetcollector.util.ReadWriteProperties;
 
 /*
-* This handles the request forwarded from the code collector task.jsp. This servlet is responsible for starting and stopping a collection as specified by the user.
-*/
-
+ * CollectorTaskServlet handles the new colletion task start request. This initializes the new collection task.
+ */
 public class CollectorTaskServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static String COLLECTION_TASK_ID;
 	public static String COLLECTION_ID;
     Thread t;
     public static TweetCollector collector;
-	private long sleepTime;
 	private boolean abort = false;
 	public CollectorTaskServlet()
 	{
@@ -52,7 +47,6 @@ public class CollectorTaskServlet extends HttpServlet {
 
 	  public void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		boolean initialized = false;
 		String collectiontaskname = "";
 		String track = "";
 		String geo ="";
@@ -76,12 +70,9 @@ public class CollectorTaskServlet extends HttpServlet {
 			CassandraPersistentCollectionTask cpct= new CassandraPersistentCollectionTask(CassandraSchema.DEFAULT_KEYSPACE_NAME,CassandraSchema.COLUMNFAMILY_NAME_COLLECTION_TASK);
 			String strtoPrint=COLLECTION_ID+":"+collectionname+COLLECTION_TASK_ID+":"+collectiontaskname+":"+track+":"+geo;
 			System.out.println(strtoPrint);
-			ReadWriteProperties rp = new ReadWriteProperties(CollectorServlet.UNIVERSAL_TYPE,CollectorServlet.SUPER_TYPE,CollectorServlet.EVENT_TYPE,collectiontaskname,track,geo,CollectorServlet.CONSUMER_KEY,CollectorServlet.CONSUMER_SECRET,CollectorServlet.AUTHENTICATION_TYPE,CollectorServlet.AUTHENTICATION_SECRET);
 			cpct.set(COLLECTION_ID,COLLECTION_TASK_ID, collectionname,collectiontaskname, startdate, enddate, track, geo);
 			collector = (TweetCollector)getServletContext().getAttribute(TweetCollector.class.getName());
 			if(collector!=null) {
-				initialized = true;
-				//we can do the book keeping work here
 			}
 			
 			
@@ -137,7 +128,6 @@ public class CollectorTaskServlet extends HttpServlet {
 			
 			 try {
 			     template.update(updater);
-			     System.out.println("I am inside stop collecting");
 			     t.interrupt();
 			     collector.abortCollection();
 			     
@@ -162,6 +152,7 @@ public class CollectorTaskServlet extends HttpServlet {
 				
 		}
 
+		@SuppressWarnings("unused")
 		private synchronized boolean isAborted() {
 			return abort;
 		}

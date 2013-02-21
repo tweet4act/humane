@@ -13,6 +13,9 @@ import me.prettyprint.hector.api.mutation.Mutator;
 import me.prettyprint.hector.api.query.QueryResult;
 import me.prettyprint.hector.api.query.SliceQuery;
 	
+/*
+ * CassandraPersistentCollectionTask defines the Collection Task column family inside the cassandra db
+ */
 	public class CassandraPersistentCollectionTask {
 		
 		

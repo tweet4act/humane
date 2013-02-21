@@ -22,9 +22,6 @@ public class TweetS {
 	private static final String KEY_ID = "id";
 	private static final String KEY_USER_LOCATION = "userLocation";
 	private static final String KEY_GEO_LOCATION_STR = "geoLocationStr";
-
-	private static final long serialVersionUID = 1L;
-	
 	protected String fromUser;
 	protected long createdAt;
 	protected String text;
@@ -127,11 +124,6 @@ public class TweetS {
 		throw new IllegalStateException("Not implemented");
 	}
 
-	@SuppressWarnings("deprecation")
-	
-
-
-	
 	public long getFromUserId() {
 		throw new IllegalStateException("Not implemented");
 	}

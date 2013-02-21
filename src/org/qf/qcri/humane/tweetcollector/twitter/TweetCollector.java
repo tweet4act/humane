@@ -51,11 +51,8 @@ import twitter4j.TwitterStreamFactory;
 		private String query;
 		private String language;
 		private boolean excludeRetweets;
-		private GeoLocation coordinates;
 		private int radius;
-		private boolean abort = false;
-		private long beginning;
-	    private long queryCounter = 0;
+		private long queryCounter = 0;
 	    private long tweetCounter = 0;
 
 		
@@ -167,7 +164,7 @@ import twitter4j.TwitterStreamFactory;
 	        		double lattitude = Double.parseDouble(xy[0]);
 	        		double longitude = Double.parseDouble(xy[1]);
 	            	System.out.println("\tCoordinates: " + lattitude + "/" + longitude);
-	        		this.coordinates = new GeoLocation(lattitude, longitude);
+	        		new GeoLocation(lattitude, longitude);
 	        		this.radius = Integer.valueOf(props.getProperty(QUERY_LOCATION_RADIUS_PROP, "1"));
 	            	System.out.println("\tRadius: " + this.radius);
 	        	}
